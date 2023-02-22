@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1> CREA TU TAREA </h1>
+<h1>{{error}}</h1>
+
+ <form action="{% url 'tasks maker' %}" method="POST" >
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>send</button>
+ </form>
+ 
+{% endblock %}

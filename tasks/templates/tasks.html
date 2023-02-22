@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Tareas</title>
+    <script type="text/javascript" >
+      let add= ()=> alert("you did it great!");
+      add(document.getElementById(""))
+    </script>
+</head>
+<body>
+    {%extends 'base.html'%}
+    {% block content %}
+        <h1>tasks Pending </h1>
+        <div>
+         {% for task in tareitas %}
+          
+            <h2>{{ task.title }}</h2>
+            <p>{{ task.description}}</p>
+            <p>{{task.created_at}}</p>
+            {% if task.important  %} <h3> 🗣️ importante</h3> {%else %} <h3> 👤 normal </h3> {%endif %}
+            <p> {{task.user }} </p>
+            <p> fecha en el que se completó : {{task.date_done|date:' l, d M Y, ha, r' }} </p>
+            <ul>
+                <li>
+                    <a href="{% url 'taskdetail' task.id %}">
+                        <button>edit</button> 
+                    </a>
+                </li>
+            </ul>
+            
+            
+         {%endfor%}
+        </div>
+    {% endblock %}
+</body>
+</html>

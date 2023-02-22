@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <title>Django Crud App</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <nav>
+              <div class="navbar-nav ms-auto ">
+                <li><a class="nav-link active" aria-current="page" >Home</a></li>
+                <li><a class="nav-link" >tasks</a></li>
+                <li><a class="nav-link"  >completado</a></li>
+               
+                
+                
+              </div>
+            </nav>
+          </div>
+        </div>
+      </nav>
+         
+        <ul>
+            <li class="nav-link" > <a href=" {%url 'index' %} ">home</a> </li>
+            {% if user.is_authenticated %} <li class="nav-link" ><a href=" {%url 'tareas' %} ">tasks</a></li> {% endif %}
+            {% if user.is_authenticated %} <li class="nav-link" ><a href="{% url 'completed' %}">completed tasks</a></li> {% endif %}
+            {% if user.is_authenticated %}<li class="nav-link" ><a href=" {%url 'logout' %} ">Log out</a></li>{% else %} <li><a class="nav-link" href=" {%url 'registrarse' %} ">Sign up</a></li> {% endif %}
+            {% if user.is_authenticated == False %}<li class="nav-link" ><a href="{% url 'signin' %}">Sign in</a></li>{% endif %}   
+            {% if user.is_authenticated %} <li class="nav-link" ><a href="{% url 'tasks maker' %}">Tasks maker</a></li> {% endif %}
+
+        </ul>
+    </nav>
+
+{% block content %}
+{% endblock %}
+</body>
+</html>
